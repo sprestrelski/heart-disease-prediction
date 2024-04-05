@@ -475,16 +475,12 @@ We will do all work in Jupyter notebooks using publicly available models and dat
 
 We will use silhouette score to evaluate our models. Silhouette score takes into account the distances between the points of one cluster and the nearest cluster center. The function for silhouette score can be generalized as such:
 
-$$
-\frac{separation - cohesion}{max(separation, cohesion)}
-$$
+$$\frac{separation - cohesion}{max(separation, cohesion)}$$
 
 This metric can be used to determine the optimal number of clusters for our data as certain factors could lead to specific kinds of heart disease, or we can see if there is great overlap between them with a smaller number of clusters. This metric works across all of our unsupervised clustering methods and allows us to directly compare the performance of multiple models, rather than having to interpret multiple metrics.
 
 Another metric that we will use is sum of squared distances or SSD. SSD measures how compact each cluster is by calculating the sum of squared distances between each datapoint and the centroid of its cluster. The formula is given as such:
-$$
-SSD = \sum_{i=1}^{n} (x_i - \mu)^2
-$$
+$$SSD = \sum_{i=1}^{n} (x_i - \mu)^2$$
 This metric is typically used in tandem with silhouette score or the elbow method in order to determine the number of clusters that should be used for the model.
 
 ## Results
@@ -1890,11 +1886,9 @@ After running all the models on the data, we found that the scores were quite lo
 ### Limitations
 
 We found it very computationally expensive to run models with more than 1000 datapoints, especially when using a GMM even with PCA. This is a major limitation, since the dataset itself has 320,000 datapoints. However, if we calculate the required sample size for a [population proportion](https://ecampusontario.pressbooks.pub/introstats/chapter/7-5-calculating-the-sample-size-for-a-confidence-interval/), we find that we would only need to survey 752 people with a margin of error of 0.03 and a 90% confidence interval.
-$$
-n = p \times (1 - p) \times (\frac{z}{E})^2 \\
+$$n = p \times (1 - p) \times (\frac{z}{E})^2 \\
 = (0.5)(0.5)(\frac{1.6448}{0.03})^2 \\ 
-= 751.4908
-$$
+= 751.4908$$
 For our project, we accept this margin of error and confidence interval. If we wanted to increase the amount of data used, we would need to find a way to either a) further reduce the data to make the computation time faster or b) get access to a better hardware setup. 
 
 Because of the large nature of our dataset, we had to reduce dimensionality using PCA. Though we explored using a different number of clusters, it would be interesting to see what similar traits each of the clusters had to each other and how the model may have broken down categories at different cluster sizes. However, this would be computationally expensive to run given that we used 1000 datapoints with 130 columns and tested models with up to 100 clusters.
